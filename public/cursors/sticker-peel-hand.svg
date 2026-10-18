@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="180 190 1080 1080">
+  <!-- Trace of the user's supplied reference: rounded fingers and open wrist. -->
+  <path d="M394 1118V719L252 574C195 514 252 440 315 487L594 649L611 311C612 234 731 224 740 310L774 663L1092 469C1175 424 1224 506 1162 563L996 721C966 748 995 790 1033 768L1150 714C1210 689 1245 753 1198 803L1035 967L972 1123" fill="#15171c" stroke="#fff" stroke-width="53" stroke-linecap="butt" stroke-linejoin="round"/>
+  <path d="M394 1023H912" fill="none" stroke="#fff" stroke-width="61" stroke-linecap="round"/>
+</svg>

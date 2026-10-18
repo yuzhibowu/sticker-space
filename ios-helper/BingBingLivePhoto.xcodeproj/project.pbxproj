@@ -1,0 +1,35 @@
+// !$*UTF8*$!
+{archiveVersion=1;classes={};objectVersion=56;objects={
+20C10C46B2CC31FF24E67119 = {isa=PBXFileReference;lastKnownFileType=sourcecode.swift;path="App/BingBingLiveApp.swift";sourceTree="<group>";};
+3FF46E174DBC0E293DC219CD = {isa=PBXFileReference;lastKnownFileType=sourcecode.swift;path="ShareExtension/ShareViewController.swift";sourceTree="<group>";};
+E4274C3EBB0FB289C9A006C2 = {isa=PBXFileReference;lastKnownFileType=sourcecode.swift;path="Shared/ImportView.swift";sourceTree="<group>";};
+1FD032B2AD1192004BB45C42 = {isa=PBXFileReference;lastKnownFileType=sourcecode.swift;path="Shared/LivePhotoWriter.swift";sourceTree="<group>";};
+6D795F13C8C22E022040EE00 = {isa=PBXFileReference;explicitFileType=wrapper.application;path=BingBingLivePhoto.app;sourceTree=BUILT_PRODUCTS_DIR;};
+86081438901D997A0AB153CB = {isa=PBXFileReference;explicitFileType="wrapper.app-extension";path=BingBingShare.appex;sourceTree=BUILT_PRODUCTS_DIR;};
+FBDC4F23F93125BBEEAE800C = {isa=PBXGroup;children=(6D795F13C8C22E022040EE00,86081438901D997A0AB153CB,);name=Products;sourceTree="<group>";};
+B28B7AF69320201D1CF206EB = {isa=PBXGroup;children=(20C10C46B2CC31FF24E67119,3FF46E174DBC0E293DC219CD,E4274C3EBB0FB289C9A006C2,1FD032B2AD1192004BB45C42,FBDC4F23F93125BBEEAE800C,);sourceTree="<group>";};
+89E1FD6268CC0F221A2BE178 = {isa=XCBuildConfiguration;name=Debug;buildSettings={ALWAYS_SEARCH_USER_PATHS=NO;SDKROOT=iphoneos;IPHONEOS_DEPLOYMENT_TARGET=17.0;SWIFT_VERSION=5.0;TARGETED_DEVICE_FAMILY="1,2";CODE_SIGN_STYLE=Automatic;SWIFT_OPTIMIZATION_LEVEL="-Onone";};};
+E6DE6C99132752C914FEF632 = {isa=XCBuildConfiguration;name=Release;buildSettings={ALWAYS_SEARCH_USER_PATHS=NO;SDKROOT=iphoneos;IPHONEOS_DEPLOYMENT_TARGET=17.0;SWIFT_VERSION=5.0;TARGETED_DEVICE_FAMILY="1,2";CODE_SIGN_STYLE=Automatic;SWIFT_OPTIMIZATION_LEVEL="-O";};};
+862894B703A6DEDF96A9DD6C = {isa=XCConfigurationList;buildConfigurations=(89E1FD6268CC0F221A2BE178,E6DE6C99132752C914FEF632,);defaultConfigurationIsVisible=0;defaultConfigurationName=Release;};
+53E5AD58597AD3A37BD24E0B = {isa=PBXBuildFile;fileRef=86081438901D997A0AB153CB;settings={ATTRIBUTES=(RemoveHeadersOnCopy,);};};
+34EC437E5837D0D5F6E620DD = {isa=PBXCopyFilesBuildPhase;buildActionMask=2147483647;dstPath="";dstSubfolderSpec=13;files=(53E5AD58597AD3A37BD24E0B,);name="Embed App Extensions";runOnlyForDeploymentPostprocessing=0;};
+D799BAE6088A90139B415FCC = {isa=PBXContainerItemProxy;containerPortal=98F54143AB4E86B28C3AFEE0;proxyType=1;remoteGlobalIDString=D377DCA38BB4267723D1FE47;remoteInfo=BingBingShare;};
+E9FAD0C6CD43534327C0AF90 = {isa=PBXTargetDependency;target=D377DCA38BB4267723D1FE47;targetProxy=D799BAE6088A90139B415FCC;};
+6874C186DAE4E0F612D5944F = {isa=PBXBuildFile;fileRef=1FD032B2AD1192004BB45C42;};
+F77975DDD722A5A284B4CE1A = {isa=PBXBuildFile;fileRef=E4274C3EBB0FB289C9A006C2;};
+638C014BA0A56D160A639C9C = {isa=PBXBuildFile;fileRef=20C10C46B2CC31FF24E67119;};
+2D764CD838DB39F040AA7EC4 = {isa=PBXSourcesBuildPhase;buildActionMask=2147483647;files=(6874C186DAE4E0F612D5944F,F77975DDD722A5A284B4CE1A,638C014BA0A56D160A639C9C,);runOnlyForDeploymentPostprocessing=0;};
+E9B2E96ABC5F6856F2BE79CF = {isa=XCBuildConfiguration;name=Debug;buildSettings={PRODUCT_NAME="$(TARGET_NAME)";PRODUCT_BUNDLE_IDENTIFIER=top.bingbingtz.livephoto;INFOPLIST_FILE=App/Info.plist;GENERATE_INFOPLIST_FILE=NO;SWIFT_OPTIMIZATION_LEVEL="-Onone";};};
+5A8C91857F674E16E2724F47 = {isa=XCBuildConfiguration;name=Release;buildSettings={PRODUCT_NAME="$(TARGET_NAME)";PRODUCT_BUNDLE_IDENTIFIER=top.bingbingtz.livephoto;INFOPLIST_FILE=App/Info.plist;GENERATE_INFOPLIST_FILE=NO;SWIFT_OPTIMIZATION_LEVEL="-O";};};
+F37922C48DA5978D02C9E50E = {isa=XCConfigurationList;buildConfigurations=(E9B2E96ABC5F6856F2BE79CF,5A8C91857F674E16E2724F47,);defaultConfigurationIsVisible=0;defaultConfigurationName=Release;};
+4F6027D858B72CC70E5CC8E9 = {isa=PBXNativeTarget;buildConfigurationList=F37922C48DA5978D02C9E50E;buildPhases=(2D764CD838DB39F040AA7EC4,34EC437E5837D0D5F6E620DD,);buildRules=();dependencies=(E9FAD0C6CD43534327C0AF90,);name=BingBingLivePhoto;productName=BingBingLivePhoto;productReference=6D795F13C8C22E022040EE00;productType="com.apple.product-type.application";};
+C3BD029B5225108D39355B2D = {isa=PBXBuildFile;fileRef=1FD032B2AD1192004BB45C42;};
+BA2C38AFAFD70BAFD4B6B504 = {isa=PBXBuildFile;fileRef=E4274C3EBB0FB289C9A006C2;};
+B3DEB8B1608312BF9ECB8941 = {isa=PBXBuildFile;fileRef=3FF46E174DBC0E293DC219CD;};
+2345266BB0F94DE2A9F78AAF = {isa=PBXSourcesBuildPhase;buildActionMask=2147483647;files=(C3BD029B5225108D39355B2D,BA2C38AFAFD70BAFD4B6B504,B3DEB8B1608312BF9ECB8941,);runOnlyForDeploymentPostprocessing=0;};
+72893883F3192A7AD4510527 = {isa=XCBuildConfiguration;name=Debug;buildSettings={PRODUCT_NAME="$(TARGET_NAME)";PRODUCT_BUNDLE_IDENTIFIER=top.bingbingtz.livephoto.share;INFOPLIST_FILE=ShareExtension/Info.plist;GENERATE_INFOPLIST_FILE=NO;APPLICATION_EXTENSION_API_ONLY=YES;SKIP_INSTALL=YES;SWIFT_OPTIMIZATION_LEVEL="-Onone";};};
+E960CA4A67986CF3C1F1522E = {isa=XCBuildConfiguration;name=Release;buildSettings={PRODUCT_NAME="$(TARGET_NAME)";PRODUCT_BUNDLE_IDENTIFIER=top.bingbingtz.livephoto.share;INFOPLIST_FILE=ShareExtension/Info.plist;GENERATE_INFOPLIST_FILE=NO;APPLICATION_EXTENSION_API_ONLY=YES;SKIP_INSTALL=YES;SWIFT_OPTIMIZATION_LEVEL="-O";};};
+D4538378BA730E3526A25683 = {isa=XCConfigurationList;buildConfigurations=(72893883F3192A7AD4510527,E960CA4A67986CF3C1F1522E,);defaultConfigurationIsVisible=0;defaultConfigurationName=Release;};
+D377DCA38BB4267723D1FE47 = {isa=PBXNativeTarget;buildConfigurationList=D4538378BA730E3526A25683;buildPhases=(2345266BB0F94DE2A9F78AAF,);buildRules=();dependencies=();name=BingBingShare;productName=BingBingShare;productReference=86081438901D997A0AB153CB;productType="com.apple.product-type.app-extension";};
+98F54143AB4E86B28C3AFEE0 = {isa=PBXProject;attributes={LastUpgradeCheck=2630;};buildConfigurationList=862894B703A6DEDF96A9DD6C;compatibilityVersion="Xcode 14.0";developmentRegion=en;hasScannedForEncodings=0;knownRegions=(en,Base,);mainGroup=B28B7AF69320201D1CF206EB;productRefGroup=FBDC4F23F93125BBEEAE800C;projectDirPath="";projectRoot="";targets=(4F6027D858B72CC70E5CC8E9,D377DCA38BB4267723D1FE47,);};
+};rootObject=98F54143AB4E86B28C3AFEE0;}

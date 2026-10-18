@@ -1,0 +1,32 @@
+import {expect,it} from 'vitest';
+import * as THREE from 'three';
+import {roadSignParts,roadSignGeometry} from './roadSign';
+import {validSignIcon} from './signIcon';
+import {parseProject} from './project';
+import {historyReducer} from './StickerManager';
+import {ROAD_SIGN,POLE,type SignIconAsset,type StickerSceneData} from './types';
+const icon:SignIconAsset={id:'test-icon',name:'ring.svg',source:'<svg xmlns="http://www.w3.org/2000/svg"/>',shapes:[{color:'#ff0000',contour:[[-.6,-.6],[.6,-.6],[.6,.6],[-.6,.6]],holes:[[[-.2,-.2],[-.2,.2],[.2,.2],[.2,-.2]]]}]};
+const scene:StickerSceneData={version:1,surface:ROAD_SIGN,assets:[{id:'png',name:'test',image:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUg==',width:1,height:1}],stickers:[]};
+it('SVG replaces lettering with raised solid geometry, preserving its hole and affine controls',()=>{
+ const surface={...ROAD_SIGN,icon};
+ const parts=roadSignParts(surface),raised=parts.find(p=>p.name==='SignIcon_0')!;
+ expect(parts.some(p=>p.name.startsWith('SignLettering'))).toBe(false);expect(raised.material).toBe(4);
+ raised.geometry.computeBoundingBox();expect(raised.geometry.boundingBox!.max.z-raised.geometry.boundingBox!.min.z).toBeGreaterThan(.04);expect(raised.geometry.boundingBox!.min.z).toBeCloseTo(.444,4);
+ const mesh=new THREE.Mesh(raised.geometry,new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));mesh.updateMatrixWorld();
+ expect(new THREE.Raycaster(new THREE.Vector3(0,0,2),new THREE.Vector3(0,0,-1)).intersectObject(mesh)).toHaveLength(0);
+ expect(new THREE.Raycaster(new THREE.Vector3(.4,0,2),new THREE.Vector3(0,0,-1)).intersectObject(mesh).length).toBeGreaterThan(0);
+ const moved=roadSignParts({...surface,iconScale:1.5,iconRotation:45,iconX:.5,iconY:-.4}).find(p=>p.name==='SignIcon_0')!;
+ moved.geometry.computeBoundingBox();const box=moved.geometry.boundingBox!;expect(box.getCenter(new THREE.Vector3()).x).toBeCloseTo(.5);expect(box.getCenter(new THREE.Vector3()).y).toBeCloseTo(-.4);expect(box.getSize(new THREE.Vector3()).x).toBeGreaterThan(raised.geometry.boundingBox!.getSize(new THREE.Vector3()).x*1.5);
+ expect(roadSignGeometry(surface)).not.toBe(roadSignGeometry({...surface,iconX:.5}));
+ parts.forEach(p=>p.geometry.dispose());moved.geometry.dispose();mesh.material.dispose();
+});
+it('SVG and controls survive undo, switching models, and portable project validation',()=>{
+ let state=historyReducer(scene,{type:'sign-style',style:{icon,iconScale:1.2,iconRotation:35,iconX:.3,iconY:-.4,iconColor:'#22cc99'}});
+ const restored=parseProject(JSON.parse(JSON.stringify(state.present)));expect(restored.surface).toEqual(state.present.surface);
+ expect(historyReducer(state,{type:'undo'}).present.surface).toEqual(ROAD_SIGN);
+ state=historyReducer(state,{type:'surface',surface:POLE});state=historyReducer(state,{type:'surface',surface:ROAD_SIGN});expect(state.present.surface).toEqual(restored.surface);
+ expect(()=>parseProject({...restored,surface:{...restored.surface,iconScale:Infinity}})).toThrow();
+ expect(()=>parseProject({...restored,surface:{...restored.surface,iconColor:'url(http://example.com)'}})).toThrow();
+ expect(validSignIcon({...icon,shapes:[{...icon.shapes[0],contour:[[NaN,0],[1,1],[0,1]]}]})).toBe(false);
+ expect(validSignIcon({...icon,shapes:[{...icon.shapes[0],contour:[[5,0],[1,1],[0,1]]}]})).toBe(false);
+});
